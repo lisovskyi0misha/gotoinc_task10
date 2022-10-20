@@ -10,15 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_135228) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_131557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "railway_stations", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
@@ -26,10 +20,64 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_135228) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trains", force: :cascade do |t|
-    t.string "number"
+  create_table "routes_stations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "routes_id", null: false
+    t.bigint "stations_id", null: false
+    t.index ["routes_id"], name: "index_routes_stations_on_routes_id"
+    t.index ["stations_id"], name: "index_routes_stations_on_stations_id"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "train_id", null: false
+    t.bigint "first_station_id", null: false
+    t.bigint "last_station_id", null: false
+    t.index ["first_station_id"], name: "index_tickets_on_first_station_id"
+    t.index ["last_station_id"], name: "index_tickets_on_last_station_id"
+    t.index ["train_id"], name: "index_tickets_on_train_id"
+  end
+
+  create_table "trains", force: :cascade do |t|
+    t.string "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "route_id"
+    t.bigint "current_station_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
+    t.index ["route_id"], name: "index_trains_on_route_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users_tickets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "ticket_id", null: false
+    t.index ["ticket_id"], name: "index_users_tickets_on_ticket_id"
+    t.index ["user_id"], name: "index_users_tickets_on_user_id"
+  end
+
+  add_foreign_key "routes_stations", "routes", column: "routes_id"
+  add_foreign_key "routes_stations", "stations", column: "stations_id"
+  add_foreign_key "tickets", "stations", column: "first_station_id"
+  add_foreign_key "tickets", "stations", column: "last_station_id"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "trains", "routes"
+  add_foreign_key "trains", "stations", column: "current_station_id"
+  add_foreign_key "users_tickets", "tickets"
+  add_foreign_key "users_tickets", "users"
 end
