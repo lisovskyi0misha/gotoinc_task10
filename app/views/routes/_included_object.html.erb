@@ -1,0 +1,9 @@
+<% if objects.present? %>
+    <li>Trains: <ul>
+        <%objects.each do |object| %>
+            <li><%=object.number%></li>
+        <%end%>
+    </ul></li>
+<% else %>
+    <p>Route has no <%= "#{objects.model}s".downcase%></p>
+<%end%>
