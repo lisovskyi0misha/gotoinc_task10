@@ -1,7 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @train %>
-
+<p>Passenger wagons: <%= @train.wagons.passenger.count%></p>
+<p>Second-class wagons: <%= @train.wagons.second_class.count%></p>
+<p>Top-seats: <%= @seats[:top]%></p>
+<p>Lower-seats: <%= @seats[:lower]%></p>
 <div>
   <%= link_to "Edit this train", edit_train_path(@train) %> |
   <%= link_to "Back to trains", trains_path %>

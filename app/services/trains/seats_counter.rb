@@ -1,0 +1,17 @@
+module Trains
+  class SeatsCounter
+    
+    def initialize(wagons)
+      @wagons = wagons
+    end
+
+    def count
+      @seats = {top: 0, lower: 0}
+      @wagons.each do |wagon|
+        @seats[:top] += wagon.top_seats_quantity
+        @seats[:lower] += wagon.lower_seats_quantity
+      end
+      @seats
+    end
+  end
+end
