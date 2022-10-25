@@ -1,12 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @train %>
-<p>Coupe wagons: <%= @train.wagons.coupe.count%></p>
-<p>Economy wagons: <%= @train.wagons.economy.count%></p>
-<p>Seated wagons: <%= @train.wagons.seated.count%></p>
-<p>Sleeping wagons: <%= @train.wagons.sleeping.count%></p>
-<p>Top-seats: <%= @seats[:top]%></p>
-<p>Lower-seats: <%= @seats[:lower]%></p>
+<% Wagon.subclasses.each do |cls| %>
+    <% if @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count > 0 %>
+        <p><%= cls%>(s): <%= @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count%>
+    <% end %>
+<% end %>
+
+<% @seats.each do |key, val| %>
+    <% if val > 0 %>
+        <p><%= key.to_s.capitalize.gsub('_', '-') %> seats: <%= val %></p>
+    <%end%>
+<%end%>
 <ul>
     <%@wagons.each do |wagon|%>
         <li><%=link_to wagon.order_number, wagon_path(id: wagon.id)%></li>

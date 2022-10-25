@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_080625) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_080625) do
     t.bigint "train_id", null: false
     t.integer "side_top_seats_quantity"
     t.integer "side_lower_seats_quantity"
-    t.integer "sitted_seats_quantity"
+    t.integer "seated_seats_quantity"
     t.integer "order_number"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
