@@ -1,7 +1,13 @@
 <h1>Wagon list</h1>
 
 <ul>
-    <%= render  @wagons %>
+    <% @wagons.each do |wagon| %>
+        <li>
+            <h4>Wagon: <%= wagon.id %></h4>
+            <p>Type: <%= wagon.type %></p>
+            <p>Train: <%= wagon.train.number %></p>
+        </li>
+    <% end %>
 </ul>
 
  <%= link_to 'Create wagon', new_wagon_path, class: 'btn btn-light' %>

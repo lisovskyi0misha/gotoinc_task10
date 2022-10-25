@@ -1,10 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @train %>
-<p>Passenger wagons: <%= @train.wagons.passenger.count%></p>
-<p>Second-class wagons: <%= @train.wagons.second_class.count%></p>
+<p>Coupe wagons: <%= @train.wagons.coupe.count%></p>
+<p>Economy wagons: <%= @train.wagons.economy.count%></p>
+<p>Seated wagons: <%= @train.wagons.seated.count%></p>
+<p>Sleeping wagons: <%= @train.wagons.sleeping.count%></p>
 <p>Top-seats: <%= @seats[:top]%></p>
 <p>Lower-seats: <%= @seats[:lower]%></p>
+<ul>
+    <%@wagons.each do |wagon|%>
+        <li><%=link_to wagon.order_number, wagon_path(id: wagon.id)%></li>
+    <%end%>
+</ul>
 <div>
   <%= link_to "Edit this train", edit_train_path(@train) %> |
   <%= link_to "Back to trains", trains_path %>

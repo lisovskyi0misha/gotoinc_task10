@@ -8,6 +8,7 @@ class WagonsController < ApplicationController
   end
 
   def show
+    # binding.break
   end
 
   def new
