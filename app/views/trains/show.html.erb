@@ -7,16 +7,22 @@
     <% end %>
 <% end %>
 
+<h3>Seats:</h3>
+
 <% @seats.each do |key, val| %>
     <% if val > 0 %>
         <p><%= key.to_s.capitalize.gsub('_', '-') %> seats: <%= val %></p>
     <%end%>
 <%end%>
+
+<h3>Wagons:</h3>
+
 <ul>
     <%@wagons.each do |wagon|%>
         <li><%=link_to wagon.order_number, wagon_path(id: wagon.id)%></li>
     <%end%>
 </ul>
+<%= link_to 'Create new wagon', choose_type_train_wagon_path(train_id: @train) %>
 <div>
   <%= link_to "Edit this train", edit_train_path(@train) %> |
   <%= link_to "Back to trains", trains_path %>

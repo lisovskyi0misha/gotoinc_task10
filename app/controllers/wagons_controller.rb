@@ -10,13 +10,17 @@ class WagonsController < ApplicationController
   def show
   end
 
+  def choose_type
+  end
+
   def new
+    @form_inputs = Wagons::CreateForm.new(params[:wagon_type]).call
   end
 
   def create
-    @wagon.attributes = wagon_params
-    @wagon.save
-    redirect_to wagons_path
+    @wagon = Wagon.create(wagon_params)
+    raise StandardError, @wagon.errors.full_messages if @wagon.invalid?
+    redirect_to train_path(params[:train_id])
   end
 
   def edit
@@ -43,6 +47,7 @@ class WagonsController < ApplicationController
   end
 
   def wagon_params
-    params.require(:wagon).permit(:wagon_type, :top_seats_quantity, :lower_seats_quantity, :train_id)
+    params.require(:wagon).permit(:type, :top_seats_quantity, :lower_seats_quantity, :side_lower_seats_quantity,
+      :side_top_seats_quantity, :seated_seats_quantity, :train_id)
   end
 end

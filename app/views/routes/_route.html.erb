@@ -2,8 +2,8 @@
     <li>Id: <%= route.id%></li>
     <li>Name: <%= route.title%></li>
     <li><%= route.created_at%></li>
-    <%= render partial: 'included_object', locals: {objects: route.trains} %>
-    <%= render partial: 'included_object', locals: {objects: route.stations} %>
+    <%= render partial: 'included_object', locals: {objects: route.trains, name: :number} %>
+    <%= render partial: 'included_object', locals: {objects: route.stations, name: :title} %>
 </ul>
 <%= button_to 'Delete', route_path(id: route.id), method: :delete, class: 'btn btn-light' %>
 <%= link_to 'Edit', edit_route_path(id: route.id), class: 'btn btn-light' %>

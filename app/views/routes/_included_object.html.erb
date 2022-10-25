@@ -1,7 +1,7 @@
 <% if objects.present? %>
-    <li>Trains: <ul>
+    <li><%= objects.model.to_s << 's'%>: <ul>
         <%objects.each do |object| %>
-            <li><%=object.number%></li>
+            <li><%= object.method(name).call %></li>
         <%end%>
     </ul></li>
 <% else %>

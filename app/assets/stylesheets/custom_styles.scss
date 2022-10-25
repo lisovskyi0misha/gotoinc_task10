@@ -1,6 +1,6 @@
 .form {
     width: 200px;
-  }
+}
 
 .footer {
     background-color: rgb(226, 216, 216);
@@ -11,3 +11,29 @@
     bottom: 0;
     position: fixed;
 }
+
+  
+.expandable {
+   display: none;
+}
+  
+  
+// .wagon_type_coupewagon:checked ~ .expandable {
+//     display: flex;
+//   }
+  
+  .expand-toggle:checked ~ .expandable {
+    display: flex;
+  }
+//   #wagon_type_coupewagon:checked ~ .expandable {
+//     display: flex;
+//   }
+
+input[id="wagon_type_coupewagon"]:checked {
+    display: flex;
+}
+  
+  
+  #expand-toggle:checked ~ form .inner .new_wagon .expandable {
+    display:block
+  }

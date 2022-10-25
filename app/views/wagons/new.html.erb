@@ -1,2 +1,9 @@
 <h1>Create wagon</h1>
-<%= render partial: 'form', locals: {method: :POST, path: wagons_path} %>
+<%= bootstrap_form_for @wagon, url: train_wagons_path(train_id: params[:train_id]), method: :POST do |f| %>
+    <% @form_inputs.each do |param| %>
+        <%= f.text_field param %>
+    <% end %>
+    <%= f.hidden_field :train_id, value: params[:train_id] %>
+    <%= f.hidden_field :type, value: params[:wagon_type] %>
+    <%= f.submit %>
+<% end %>
