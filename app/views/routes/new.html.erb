@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<div class="form">
+    <%=bootstrap_form_for @route, url: routes_path, method: :POST do |f|%>
+        <%= f.text_field :title%>
+        <%= f.collection_check_boxes :station_ids, Station.all, :id, :title, label: 'Stations' %>
+        <%= f.submit%>
+    <%end%>
+</div>

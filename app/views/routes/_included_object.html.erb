@@ -1,9 +1,0 @@
-<% if objects.present? %>
-    <li><%= objects.model.to_s << 's'%>: <ul>
-        <%objects.each do |object| %>
-            <li><%= object.method(name).call %></li>
-        <%end%>
-    </ul></li>
-<% else %>
-    <p>Route has no <%= "#{objects.model}s".downcase%></p>
-<%end%>

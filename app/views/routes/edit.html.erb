@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<%= bootstrap_form_for @route, url: routes_path(id: @route.id), method: :PUT do |f| %>
+    <%= f.text_field :title%>
+    <%= f.collection_check_boxes :station_ids, Station.all, :id, :title, label: 'Stations' %>
+    <%= f.submit%>
+<%end%>
+
+<%= link_to 'Edit stations for this route', edit_stations_route_path(id: @route.id), class: 'btn btn-primary' %>

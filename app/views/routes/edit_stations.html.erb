@@ -1,0 +1,15 @@
+<h1>Change stations</h1>
+<div class="form">
+    <ul><% @stations.each do |station| %>
+        <%= bootstrap_form_tag url: update_stations_route_path(station.station_id), method: :PUT do |f| %>
+            <li >
+                <%= station.title %>
+                <%= f.time_field :departure_time, value: station.departure_time.to_formatted_s(:time) %>
+                <%= f.time_field :arrival_time, value: station.arrival_time.to_formatted_s(:time) %>
+                <%= f.number_field :order_number, label: 'Order', value: station.order_number %>
+                <%= f.hidden_field :route_id, value: @route.id %>
+                <%= f.submit %>
+            </li>
+        <% end %>
+    <% end %>
+</div>

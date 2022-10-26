@@ -1,5 +1,5 @@
 .form {
-    width: 200px;
+    width: 350px;
 }
 
 .footer {
@@ -12,28 +12,11 @@
     position: fixed;
 }
 
-  
-.expandable {
-   display: none;
+.station-time, .rails-bootstrap-forms-time-select {
+  display: flex;
+  flex-direction: row;
 }
-  
-  
-// .wagon_type_coupewagon:checked ~ .expandable {
-//     display: flex;
-//   }
-  
-  .expand-toggle:checked ~ .expandable {
-    display: flex;
-  }
-//   #wagon_type_coupewagon:checked ~ .expandable {
-//     display: flex;
-//   }
 
-input[id="wagon_type_coupewagon"]:checked {
-    display: flex;
+.data-cell {
+  padding: 5px;
 }
-  
-  
-  #expand-toggle:checked ~ form .inner .new_wagon .expandable {
-    display:block
-  }
