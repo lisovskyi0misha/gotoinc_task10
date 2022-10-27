@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     put :update_stations, on: :member
   end
   resources :wagons, only: [:index, :edit, :update, :destroy, :show]
+  resource :search, only: [:show, :new]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 end
-
