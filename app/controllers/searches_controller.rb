@@ -5,6 +5,6 @@ class SearchesController < ApplicationController
   end
   
   def show
-    @tickets = Tickets::TicketsFinder.new(params[:stations_search]).find if params[:stations_search].present?
+    @trains = Trains::TrainsFinder.new(params[:stations_search]).call if params[:stations_search].present?
   end
 end

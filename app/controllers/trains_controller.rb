@@ -18,7 +18,7 @@ class TrainsController < ApplicationController
   end
 
   def create
-    @train = Train.new(train_params)
+    @train = Train.create(train_params)
   end
 
   def update
@@ -35,6 +35,6 @@ class TrainsController < ApplicationController
   end
 
   def train_params
-    params.require(:train).permit(:number, :route_id, :station_id)
+    params.require(:train).permit(:number, :route_id, :current_station_id)
   end
 end

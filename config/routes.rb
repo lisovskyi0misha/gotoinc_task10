@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :wagons, only: [:index, :edit, :update, :destroy, :show]
   resource :search, only: [:show, :new]
+  resource :ticket
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

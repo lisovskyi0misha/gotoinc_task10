@@ -7,11 +7,11 @@
             <th>Departure time</th>
             <th>Order</th>
         </tr>
-        <%@stations.each do |station| %>
+        <%@stations.ordered.each do |station| %>
             <tr>
-                <td class="data-cell"><%= station.title %></td>
-                <td class="data-cell"><%= station.arrival_time.to_formatted_s(:long) %></td>
-                <td class="data-cell"><%= station.departure_time.to_formatted_s(:long) %></td>
+                <td class="data-cell"><%= station.station.title %></td>
+                <td class="data-cell"><%= station.arrival_time&.to_formatted_s(:long) %></td>
+                <td class="data-cell"><%= station.departure_time&.to_formatted_s(:long) %></td>
                 <td class="data-cell"><%= station.order_number %></td>
             </tr>
         <%end%>

@@ -1,8 +1,7 @@
 class RoutesController < ApplicationController
 
   before_action :find_route, only: [:show, :edit, :update, :destroy, :edit_stations]
-  before_action :build_route, only: [:new, :create]
-  before_action :set_stations, only: [:edit_stations, :show]
+  before_action :set_stations, only: [:show]
 
   def index
     @routes = Route.all
@@ -15,9 +14,7 @@ class RoutesController < ApplicationController
   end
 
   def create
-    @route.attributes = route_params
-    @route.stations << Station.where(id: [params[:route][:station_ids].compact_blank])
-    @route.save
+    Routes::RoutesSaver.new(params).save
     redirect_to routes_path
   end
 
@@ -27,6 +24,7 @@ class RoutesController < ApplicationController
 
   def update
     @route.update(route_params)
+    @route.stations = Station.where(id: [params[:route][:station_ids].compact_blank])
   end
 
   def destroy
@@ -35,11 +33,12 @@ class RoutesController < ApplicationController
   end
 
   def edit_stations
+    @stations = RoutesStation.where(route_id: params[:id]).includes(:station)
   end
 
   def update_stations
     Stations::RoutesStationsSaver.new(params).save
-    redirect_to route_path(params[:route_id])
+    redirect_to edit_stations_route_path(id: params[:route_id])
   end
 
   private
@@ -49,14 +48,10 @@ class RoutesController < ApplicationController
   end
 
   def set_stations
-    @stations = Station.select(:title, 'routes_stations.*').joins(:routes_stations).where(routes_stations: {route_id: 17})
+    @stations = RoutesStation.where(route_id: params[:id]).includes(:station)
   end
 
   def build_route
     @route = Route.new
-  end
-
-  def route_params
-     params.require(:route).permit(:title)
   end
 end

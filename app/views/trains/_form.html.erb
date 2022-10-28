@@ -17,7 +17,7 @@
     <%= form.label :route_id, 'Route' %>
     <%= form.collection_select :route_id, Route.all, :id, :title%>
      <%= form.label :route_id, 'Current station' %>
-    <%= form.collection_select :station_id, Station.all, :id, :title%>
+    <%= form.collection_select :current_station_id, Station.all, :id, :title%>
   </div>
 
   <div>
