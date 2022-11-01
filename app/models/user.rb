@@ -1,5 +1,5 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable  
   has_many :tickets
-  validates_format_of :passport_code, with: /\A\d{9}\z/, message: 'Must contain 9 digits'
-  validates :name, presence: true
 end

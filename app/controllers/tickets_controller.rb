@@ -1,30 +1,45 @@
 class TicketsController < ApplicationController
 
-  before_action :create_user, only: [:new, :create]
-
-  def buy_ticket
-    binding.break
-  end
+  before_action :authenticate_user!
+  before_action :create_ticket, only: [:new, :create]
 
   def new
-    @train_id = params[:train_id]
+    @train = Train.includes(route: :routes_stations).find_by_id(params[:train_id])
+    @train_stations = @train.route.routes_stations
   end
 
   def create
-    ticket = Tickets::TicketsSaver.new(params[:user]).save
-    redirect_to ticket_path(id: ticket.id)
-  rescue ValidationError => e
-    # flash[:error] = e.message
-    redirect_to new_ticket_path(train_id: params[:user][:train_id])
+    @ticket.attributes = ticket_params
+    if @ticket.save
+      redirect_to ticket_path(id: @ticket)
+    else
+      flash[:error] = @ticket.errors.full_messages
+      redirect_to new_ticket_path(train_id: params[:user][:train_id])
+    end
   end
 
   def show
     @ticket = Ticket.includes(:user, :first_station, :last_station, train: {route: :routes_stations}).find_by_id(params[:id])
   end
 
+  def show_all
+    @tickets = Ticket.where(user_id: params[:user_id])
+  end
+
+  def search
+  end
+
+  def show_results
+    @trains = Trains::TrainsFinder.new(params[:stations_search]).call if params[:stations_search].present?
+  end
+
   private
 
-  def create_user
-    @user = User.new 
+  def create_ticket
+    @ticket = Ticket.new 
+  end
+
+  def ticket_params
+    params.require(:ticket).permit(:owner_name, :user_id, :owner_passport, :train_id, :last_station_id, :first_station_id)
   end
 end

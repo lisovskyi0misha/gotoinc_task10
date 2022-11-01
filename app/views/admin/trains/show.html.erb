@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @train %>
+<% Wagon.subclasses.each do |cls| %>
+    <% if @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count > 0 %>
+        <p><%= cls%>(s): <%= @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count%>
+    <% end %>
+<% end %>
+
+<h3>Seats:</h3>
+
+<% @seats.each do |key, val| %>
+    <% if val > 0 %>
+        <p><%= key.to_s.capitalize.gsub('_', '-') %> seats: <%= val %></p>
+    <%end%>
+<%end%>
+
+<h3>Wagons:</h3>
+
+<ul>
+    <%@wagons.each do |wagon|%>
+        <li><%=link_to wagon.order_number, admin_wagon_path(id: wagon.id)%></li>
+    <%end%>
+</ul>
+<%= link_to 'Create new wagon', choose_type_admin_train_wagon_path(train_id: @train) %>
+<div>
+  <%= link_to "Edit this train", edit_admin_train_path(@train) %> |
+  <%= link_to "Back to trains", admin_trains_path %>
+
+  <%= button_to "Destroy this train", [:admin, @train], method: :delete %>
+</div>
