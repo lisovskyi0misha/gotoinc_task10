@@ -1,0 +1,4 @@
+<p><%= t('mailer.general.greeting', name: @user.name) %></p>
+<p><%= t('mailer.purschase.notification', route: @ticket.name) %></p>
+<p><%= t('mailer.general.one_ticket_link') %><%= link_to t('mailer.general.link_word'), ticket_url(id: @ticket.id)%> </p>
+<p><%= t('mailer.general.all_tickets_link')%><%= link_to t('mailer.general.link_word'), show_all_ticket_url(user_id: @ticket.user_id) %>

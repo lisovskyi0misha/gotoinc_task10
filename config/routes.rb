@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
     resources :wagons, only: [:index, :edit, :update, :destroy, :show]
   end
-  resource :ticket, only: [:show, :new, :create] do
+  resource :ticket, only: [:show, :new, :create, :destroy] do
     get '/all/:user_id', to: 'tickets#show_all', as: :show_all
     get '/results', to: 'tickets#show_results', as: :show_results
     get '/find', to: 'tickets#search', as: :find
