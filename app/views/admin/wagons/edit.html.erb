@@ -1,2 +1,9 @@
-<h1>Edit wagon</h1>
-<%= render partial: 'form', locals: {method: :PUT, path: admin_wagon_path(id:@wagon.id)} %>
+<h1><%= t('common.edit') %></h1>
+<div class="form">
+    <%= bootstrap_form_for @wagon, url: admin_wagon_path, method: :PUT do |f| %>
+        <%= f.text_field :top_seats_quantity %>
+        <%= f.text_field :lower_seats_quantity %>
+        <%= f.collection_select :train_id, Train.all, :id, :number %>
+        <%= f.submit t('.submit')%>
+    <% end %>
+</div>

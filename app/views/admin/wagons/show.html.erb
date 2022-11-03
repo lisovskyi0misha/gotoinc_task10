@@ -1,2 +1,22 @@
-<%= render 'wagon' %>
-<%= link_to 'Back to wagons', admin_wagons_path %>
+<h4><%= t('.title') %> <%= @wagon.id %></h4>
+<p><%= t('common.type') %>: <%= t("wagon_types.#{@wagon.type.delete_suffix('Wagon').downcase}") %></p>
+<% case @wagon.type %>
+    <% when 'CoupeWagon'%>
+        <p><%= t('.top_seats') %>: <%= @wagon.top_seats_quantity %></p>
+        <p><%= t('.lower_seats') %>: <%= @wagon.lower_seats_quantity %></p>
+    <% when 'SleepingWagon' %>
+        <p><%= t('.lower_seats') %>: <%= @wagon.lower_seats_quantity %></p>
+    <% when 'EconomyWagon' %>
+        <p><%= t('.top_seats') %>: <%= @wagon.top_seats_quantity %></p>
+        <p><%= t('.lower_seats') %>: <%= @wagon.lower_seats_quantity %></p>
+        <p><%= t('.side_top_seats') %>: <%= @wagon.top_side_seats_quantity %></p>
+        <p><%= t('.side_lower_seats') %>: <%= @wagon.lower_side_seats_quantity %></p>
+    <% when 'SeatedWagon' %>
+        <p><%= t('.seated_seats') %>: <%= @wagon.seated_seats_quantity %>
+    <% end %>
+<p><%= t('.train_number') %>: <%= @wagon.train.number %></p> 
+<span><%= link_to t('common.edit'), edit_admin_wagon_path(id: @wagon.id), class: 'btn btn-secondary' %></span>
+<span><%= link_to t('common.show'), admin_wagon_path(id: @wagon.id), class: 'btn btn-secondary' %></span>
+<span><%= button_to t('common.destroy'), admin_wagon_path(id: @wagon.id), method: :delete, class: 'btn btn-secondary' %></span>
+
+<%= link_to t('common.back'), admin_wagons_path %>

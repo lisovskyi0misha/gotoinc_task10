@@ -1,8 +1,0 @@
-<div class="form">
-    <%= bootstrap_form_for @wagon, url: path, method: method do |f| %>
-        <%= f.text_field :top_seats_quantity %>
-        <%= f.text_field :lower_seats_quantity %>
-        <%= f.collection_select :train_id, Train.all, :id, :number, label: 'Train' %>
-        <%= f.submit %>
-    <% end %>
-</div>

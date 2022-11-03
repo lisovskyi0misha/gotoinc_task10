@@ -11,6 +11,7 @@ class Admin::WagonsController < Admin::BaseController
   end
 
   def choose_type
+    @collection = [[t('.coupe'), :coupe], [t('.sleeping'), :sleeping], [t('.seated'), :seated], [t('.economy'), :economy]]
   end
 
   def new
@@ -19,8 +20,12 @@ class Admin::WagonsController < Admin::BaseController
 
   def create
     @wagon = Wagon.create(wagon_params)
-    raise StandardError, @wagon.errors.full_messages if @wagon.invalid?
-    redirect_to train_path(params[:train_id])
+    if @wagon.save
+      redirect_to admin_train_path(params[:train_id])
+    else
+      flash[:error] = @wagon.errors.full_messages
+    redirect_to new_admin_train_wagon_path(wagon_type: params[:wagon][:type])
+    end
   end
 
   def edit

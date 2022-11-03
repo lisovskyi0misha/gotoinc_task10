@@ -20,6 +20,12 @@ class Admin::TrainsController < Admin::BaseController
 
   def create
     @train = Train.create(train_params)
+    if @train.valid?
+      redirect_to admin_trains_path
+    else
+      flash[:error] = @train.errors.full_messages
+      redirect_to new_admin_train_path
+    end
   end
 
   def update

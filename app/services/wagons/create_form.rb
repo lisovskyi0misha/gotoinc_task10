@@ -7,10 +7,10 @@ module Wagons
 
     def call
       forms = {
-        'CoupeWagon' => [:lower_seats_quantity, :top_seats_quantity],
-        'EconomyWagon' => [:lower_seats_quantity, :top_seats_quantity, :side_lower_seats_quantity, :side_top_seats_quantity],
-        'SleepingWagon' => [:lower_seats_quantity],
-        'SeatedWagon' => [:seated_seats_quantity]
+        'coupe' => [:lower_seats_quantity, :top_seats_quantity],
+        'economy' => [:lower_seats_quantity, :top_seats_quantity, :side_lower_seats_quantity, :side_top_seats_quantity],
+        'sleeping' => [:lower_seats_quantity],
+        'seated' => [:seated_seats_quantity]
       }
       forms[@type]
     end

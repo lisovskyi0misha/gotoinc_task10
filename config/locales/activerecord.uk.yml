@@ -1,0 +1,43 @@
+uk:
+  activerecord:
+    models:
+      station: 'Станція'
+      train: 'Потяг' 
+      wagon: 'Вагон'
+      route: 'Маршрут'
+      cope_wagon: 'Купе вагон'
+      economy_wagon: 'Плацкартний вагон'
+      seated_wagon: 'Сидячий вагон'
+      sleeping_wagon: 'Спальний вагон'
+    attributes:
+      station:
+        title: 'Назва'
+      train:
+        number: 'Номер'
+        route_id: 'Маршрут'
+        current_station_id: 'Поточна станція'
+      wagon: 
+        type: 'Тип'
+        train_id: 'Потяг'
+        top_seats_quantity: 'Кількість верхніх місць'
+        lower_seats_quantity: 'Кількість нижніх місць'
+        side_top_seats_quantity: 'Кількість бокових верхніх місць'
+        side_lower_seats_quantity: 'Кількість бокових нижніх місць'
+        seated_seats_quantity: 'Кількість сидячих місць'
+    errors:
+      messages:
+        blank: 'не може бути порожнім'
+        invalid: 'має невірний формат'
+      models:
+        wagon:
+          attributes:
+            top_seats_quantity:
+              blank: 'не може бути нулем'
+            lower_seats_quantity:
+              blank: 'не може бути нулем'
+            side_top_seats_quantity:
+              blank: 'не може бути нулем'
+            side_lower_seats_quantity:
+              blank: 'не може бути нулем'
+            seated_seats_quantity:
+              blank: 'не може бути нулем'
