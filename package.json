@@ -1,6 +1,10 @@
 {
   "name": "app",
   "private": "true",
+  "engines": {
+    "node": "16.18.0",
+    "npm": "8.19.2"
+  },
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "^7.2.4",
@@ -8,7 +12,7 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "esbuild": "^0.15.11",
-    "node": "14",
+    "node": "16",
     "sass": "^1.55.0"
   },
   "scripts": {
