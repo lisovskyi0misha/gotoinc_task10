@@ -23,8 +23,8 @@ class Admin::TrainsController < Admin::BaseController
     if @train.valid?
       redirect_to admin_trains_path
     else
-      flash[:error] = @train.errors.full_messages
-      redirect_to new_admin_train_path
+      flash[:error] = @train.errors.full_messages.join(', ')
+      render :new, status: :unprocessable_entity
     end
   end
 

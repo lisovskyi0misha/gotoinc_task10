@@ -41,3 +41,7 @@ uk:
               blank: 'не може бути нулем'
             seated_seats_quantity:
               blank: 'не може бути нулем'
+        station:
+          attributes:
+            title:
+              blank: 'не може бути порожньою'
