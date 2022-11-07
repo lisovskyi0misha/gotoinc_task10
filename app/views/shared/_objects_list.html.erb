@@ -15,8 +15,10 @@
                 <% if object.class.method_defined?(:title) %>
                     <%= object.title %>
                 <% else %>
-                    <%= object.number %>
+                    <%= object.number %><span><i class="bi bi-pencil-square"></i></span>
                 <%end%>
+                <button class="btn" id="object_<%= object.id %>"><i class="bi bi-pencil-square"></i></span></button>
+                <%= bootstrap_form_for object, url: edit_inline%>
             </td>
             <td class="objext-list-cell">
                 <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}", class: 'btn btn-outline-success' %>
