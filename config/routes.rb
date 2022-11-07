@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   root to: 'landing_page#index'
   namespace :admin do
     resources :tickets, only: [:index, :update, :edit, :destroy, :show]
-    resources :stations
+    resources :stations do
+      post :inline_update, on: :member
+    end
     resources :routes do
       get :edit_stations, on: :member
       put :update_stations, on: :member
     end
     resources :trains do
+      post :inline_update, on: :member
       resources :wagons, only: [:new, :create]
     end
     resources :wagons, only: [:index, :edit, :update, :destroy, :show]

@@ -26,6 +26,10 @@ class Admin::StationsController < Admin::BaseController
     end
   end
 
+  def inline_update
+    binding.break
+  end
+
   def update
      @station = Station.update(station_params)
   end

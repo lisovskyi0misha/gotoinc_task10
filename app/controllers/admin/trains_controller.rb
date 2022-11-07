@@ -31,6 +31,10 @@ class Admin::TrainsController < Admin::BaseController
   def update
   end
 
+  def inline_update
+
+  end
+
   def destroy
     @train.destroy
   end

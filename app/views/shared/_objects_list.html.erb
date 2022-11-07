@@ -17,8 +17,13 @@
                 <% else %>
                     <%= object.number %><span><i class="bi bi-pencil-square"></i></span>
                 <%end%>
-                <button class="btn" id="object_<%= object.id %>"><i class="bi bi-pencil-square"></i></span></button>
-                <%= bootstrap_form_for object, url: edit_inline%>
+                <%= link_to '', class: "btn", data: { station_id: object.id} do %>
+                    <i class="bi bi-pencil-square"></i></span>
+                <%end%>
+                <%= bootstrap_form_for object, url: inline_update_admin_station_path(id: object.id), html: {style: "display: none"}  do |f| %>
+                    <%= f.text_field :title%>
+                    <%= f.submit %>
+                <% end %>
             </td>
             <td class="objext-list-cell">
                 <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}", class: 'btn btn-outline-success' %>
