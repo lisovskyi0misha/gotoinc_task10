@@ -62,22 +62,22 @@ uk:
       edit:
         title: 'Редагування потягу'
     wagons:
-      choose_type:
+      new:
+        title: 'Створення вагону'
+        create: 'Створити вагон'
         wagon_type: 'Тип вагону'
         coupe: 'Купейний вагон'
         economy: 'Плацкартний вагон'
         seated: 'Сидячий вагон'
         sleeping: 'Спальний вагон'
         choose: 'Обрати'
-      new:
-        title: 'Створення вагону'
-        create: 'Створити вагон'
       edit:
         submit: 'Оновити вагон'
       index:
         title: 'Список вагонів'
         wagon: 'Вагон'
         train_number: 'Номер потягу'
+        seats_count: 'Кількість місць'
       show:
         title: 'Вагон'
         top_seats: 'Кількість верхніх місць'

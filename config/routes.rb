@@ -9,9 +9,7 @@ Rails.application.routes.draw do
       put :update_stations, on: :member
     end
     resources :trains do
-      resources :wagons, only: [:new, :create] do
-        get :choose_type, on: :member
-      end
+      resources :wagons, only: [:new, :create]
     end
     resources :wagons, only: [:index, :edit, :update, :destroy, :show]
   end

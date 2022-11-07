@@ -10,12 +10,8 @@ class Admin::WagonsController < Admin::BaseController
   def show
   end
 
-  def choose_type
-    @collection = [[t('.coupe'), :coupe], [t('.sleeping'), :sleeping], [t('.seated'), :seated], [t('.economy'), :economy]]
-  end
-
   def new
-    @form_inputs = Wagons::CreateForm.new(params[:wagon_type]).call
+    @collection = [[t('.coupe'), 'CoupeWagon'], [t('.sleeping'), 'SleepingWagon'], [t('.seated'), 'SeatedWagon'], [t('.economy'), 'EconomyWagon']]
   end
 
   def create
