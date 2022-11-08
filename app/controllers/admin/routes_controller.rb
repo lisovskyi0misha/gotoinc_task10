@@ -4,7 +4,7 @@ class Admin::RoutesController < Admin::BaseController
   before_action :set_stations, only: [:show]
 
   def index
-    @routes = Route.all
+    @routes = Route.includes(:stations, :trains).all
   end
 
   def show

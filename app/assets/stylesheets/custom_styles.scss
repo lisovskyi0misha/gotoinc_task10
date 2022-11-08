@@ -23,8 +23,8 @@
 
 .objext-list-cell {
   padding: 5px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   display: flex;
   justify-content: center;
 }
@@ -34,7 +34,13 @@
 }
 
 .cell-text {
-  min-width: 100px;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.cell-id-text {
+  min-width: 80px;
   display: flex;
   justify-content: center;
 }

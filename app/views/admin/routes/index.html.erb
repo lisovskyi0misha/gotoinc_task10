@@ -1,9 +1,22 @@
 <h1>Routes</h1>
 
+<table>
+    <tr class="object-list-row">
+        <th class="objext-list-cell"><p class="cell-id-text"><%= t('.route') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.title') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.trains_count') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.stations_count') %></p></th>
+    </tr>
+    <% @routes.each do |route| %>
+        <tr class="object-list-row">
+            <td class="objext-list-cell"><p class="cell-id-text"><%= route.id %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= route.title %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= route.trains.count %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= route.stations.count %></p></td>
+            <%= render partial: 'shared/link_buttons', locals: {link_word: 'routes', id: route.id} %>
+        </tr>
+    <% end %>
+</table>
 <ul>
-    <%@routes.each do |route|%>
-        <li><%=link_to route.title, admin_route_path(id: route.id)%>, <%=route.id%></li>
-    <%end%>
-</ul>
 
-<%=link_to 'Create route', new_admin_route_path%>
+<%=link_to 'Create route', new_admin_route_path, class: 'btn btn-outline-primary' %>

@@ -65,6 +65,12 @@ uk:
         submit: '%{action} потяг'
       edit:
         title: 'Редагування потягу'
+    routes:
+      index:
+        route: 'Маршрут'
+        trains_count: 'Кількість потягів'
+        stations_count: 'Кількість станцій'
+        title: 'Назва'
     wagons:
       new:
         title: 'Створення вагону'
