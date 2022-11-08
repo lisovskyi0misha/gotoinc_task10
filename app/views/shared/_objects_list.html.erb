@@ -1,11 +1,7 @@
 <table class="object-list-table">
-    <tr>
-        <th class="objext-list-cell">
-            <% if objects.first.class.method_defined?(:title) %>   
-                <strong><%= t(".#{attribute.to_s}" )%></strong>
-            <% else %>
-                <strong><%= t('.number') %></strong>
-            <%end%>
+    <tr class="object-list-row">
+        <th class="objext-list-cell"> 
+            <strong><%= t(".#{attribute.to_s}" )%></strong>
         </th>
     </tr>
 
