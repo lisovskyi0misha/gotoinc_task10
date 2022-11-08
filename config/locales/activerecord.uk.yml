@@ -45,3 +45,7 @@ uk:
           attributes:
             title:
               blank: 'не може бути порожньою'
+        user:
+          attributes:
+            email:
+              taken: 'Вже є акаунт з цією поштою'
