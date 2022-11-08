@@ -3,7 +3,7 @@
 <h1><%= t('.title') %></h1>
 
 <div id="stations">
-<%= render partial: 'shared/objects_list', locals: {objects: @stations} %>
+<%= render partial: 'shared/objects_list', locals: { objects: @stations, attribute: :title, link_word: 'stations' } %>
 
 </div>
 

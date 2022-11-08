@@ -3,7 +3,7 @@
 <h1><%= t('.title') %></h1>
 
 <div id="trains">
-<%= render partial: 'shared/objects_list', locals: {objects: @trains} %>
+<%= render partial: 'shared/objects_list', locals: {objects: @trains, attribute: :number, link_word: 'trains'} %>
 </div>
 
 <%= link_to t('common.create'), new_admin_train_path, class: 'btn btn-outline-primary' %>

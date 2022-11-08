@@ -2,7 +2,7 @@
     <tr>
         <th class="objext-list-cell">
             <% if objects.first.class.method_defined?(:title) %>   
-                <strong><%= t('.title' )%></strong>
+                <strong><%= t(".#{attribute.to_s}" )%></strong>
             <% else %>
                 <strong><%= t('.number') %></strong>
             <%end%>
@@ -10,29 +10,36 @@
     </tr>
 
     <% objects.each do |object| %>
-        <tr>
+        <tr class="object-list-row">
             <td class="objext-list-cell">
-                <% if object.class.method_defined?(:title) %>
-                    <%= object.title %>
-                <% else %>
-                    <%= object.number %><span><i class="bi bi-pencil-square"></i></span>
-                <%end%>
-                <%= link_to '', class: "btn", data: { station_id: object.id} do %>
+                <div id="object_title_<%= object.id %>">
+                    <%= object.method(attribute).call %>
+                </div>
+                <%= link_to '', class: "button-for-form", data: { object_id: object.id} do %>
                     <i class="bi bi-pencil-square"></i></span>
                 <%end%>
-                <%= bootstrap_form_for object, url: inline_update_admin_station_path(id: object.id), html: {style: "display: none"}  do |f| %>
-                    <%= f.text_field :title%>
-                    <%= f.submit %>
+                <%= bootstrap_form_for object, url: "#{link_word}/#{object.id}/inline_update", html: {style: "display: none"}, method: :PUT  do |f| %>
+                    <%= f.text_field attribute%>
+                    <%= f.submit t('common.edit') %>
                 <% end %>
+                <div class="cancel-button", id="cancel-button-object-<%= object.id %>">
+                    <button class="btn btn-outline-primary"><%= t('.cancel') %></button>
+                </div>
             </td>
             <td class="objext-list-cell">
-                <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}", class: 'btn btn-outline-success' %>
+                <div>
+                    <%= link_to t('common.show'), "#{link_word}/#{object.id}", class: 'btn btn-outline-success' %>
+                </div>
             </td>
             <td class="objext-list-cell">
-                <%= link_to t('common.edit'), "#{objects.model.to_s.downcase}s/#{object.id}/edit", class: 'btn btn-outline-warning' %>
+                <div>
+                    <%= link_to t('common.edit'), "#{link_word}/#{object.id}/edit", class: 'btn btn-outline-warning' %>
+                </div>
             </td>
             <td class="objext-list-cell">
-                <%= button_to t('common.destroy'), "#{objects.model.to_s.downcase}s/#{object.id}", method: :delete, class: 'btn btn-outline-danger' %>
+                <div>
+                    <%= button_to t('common.destroy'), "#{link_word}/#{object.id}", method: :delete, class: 'btn btn-outline-danger' %>
+                </div>
             </td>
         </tr>
     <% end %>

@@ -25,8 +25,18 @@
   padding: 5px;
   padding-left: 50px;
   padding-right: 50px;
+  display: flex;
+}
+
+.object-list-row {
+  display: flex;
 }
 
 #economy-and-coupe-class-seats, #economy-class-seats, #seated-class-seats, #not-sleeping-class-seats {
+  display: none;
+}
+
+.cancel-button {
+  margin-left: 10px;
   display: none;
 }

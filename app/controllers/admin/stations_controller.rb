@@ -27,7 +27,14 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def inline_update
-    binding.break
+    station = Station.find_by_id(params[:id])
+    station.update(title: params[:station][:title])
+    if station.valid?
+      flash[:success] = t('.success')
+    else
+      flash[:error] = station.errors.full_messages.join(', ')
+    end
+    redirect_to admin_stations_path
   end
 
   def update

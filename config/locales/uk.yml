@@ -37,9 +37,13 @@ uk:
         title: 'Станції'
       station:
         title: 'Назва'
+      inline_update:
+        success: 'Станція була успішно оновлена'
     trains:
       index: 
         title: 'Потяги'
+      inline_update: 
+        success: 'Потяг був успішно оновлений'
       train:
         number: 'Номер'
         route: 'Маршрут'
@@ -90,6 +94,7 @@ uk:
     objects_list:
       title: 'Назва'
       number: 'Номер'
+      cancel: 'Відмінити'
     header:
       stations: 'Станції'
       trains: 'Потяги'
