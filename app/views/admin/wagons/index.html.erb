@@ -1,19 +1,19 @@
 <h1><%= t('.title') %></h1>
 
 <table>
-    <tr>
-        <th class="objext-list-cell"><%= t('.wagon') %></th>
-        <th class="objext-list-cell"><%= t('common.type') %></th>
-        <th class="objext-list-cell"><%= t('.train_number') %></th>
-        <th class="objext-list-cell"><%= t('.seats_count') %></th>
+    <tr class="object-list-row">
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.wagon') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('common.type') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.train_number') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.seats_count') %></p></th>
     </tr>
     <% @wagons.each do |wagon| %>
-        <tr>
-            <td class="objext-list-cell"><%= wagon.id %></td>
-            <td class="objext-list-cell"><%= t("wagon_types.#{wagon.type.delete_suffix('Wagon').downcase}") %></td>
-            <td class="objext-list-cell"><%= wagon.train.number %></td>
-            <td class="objext-list-cell"><%= wagon.all_seats_count %></td>
-            <td class="objext-list-cell"><%= link_to t('common.show'), admin_wagon_path(wagon.id), class: 'btn btn-outline-success' %></td>
+        <tr class="object-list-row">
+            <td class="objext-list-cell"><p class="cell-text"><%= wagon.id %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= t("wagon_types.#{wagon.type.delete_suffix('Wagon').downcase}") %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= wagon.train.number %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= wagon.all_seats_count %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= link_to t('common.show'), admin_wagon_path(wagon.id), class: 'btn btn-outline-success' %></p></td>
         </tr>
     <% end %>
 </ul>
