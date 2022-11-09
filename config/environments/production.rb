@@ -69,8 +69,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'arcane-ravine-04638.herokuapp.com/' }
 
   ActionMailer::Base.smtp_settings = {
-    user_name: '123456789',
-    password: Rails.application.credentials.dig(:sendgrid, :api_key),
+    user_name: 'apikey',
+    password: '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',
     domain: 'arcane-ravine-04638.herokuapp.com/',
     address: 'smtp.sendgrid.net',
     port: 587,
