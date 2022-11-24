@@ -1,0 +1,7 @@
+<ul>
+    <%@routes.each do |route|%>
+        <li><%=link_to route.title, route_path(id: route.id)%>, <%=route.id%></li>
+    <%end%>
+</ul>
+
+<%=link_to 'Create route', new_route_path%>

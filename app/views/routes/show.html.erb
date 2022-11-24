@@ -1,0 +1,7 @@
+<ul>
+    <li><%=@route.id%></li>
+    <li><%=@route.title%></li>
+    <li><%=@route.created_at%></li>
+    <li><%=button_to 'Delete', route_path(id: @route.id), method: :delete%></li>
+    <li><%=link_to 'Update', edit_route_path(id: @route.id)%>
+</ul>
