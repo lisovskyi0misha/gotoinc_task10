@@ -6,6 +6,7 @@ class TrainsController < ApplicationController
   end
 
   def show
+    @seats = Trains::SeatsCounter.new(@train.wagons).count
   end
 
   def new
@@ -29,7 +30,7 @@ class TrainsController < ApplicationController
   private
 
     def set_train
-      @train = Train.find(params[:id])
+      @train = Train.includes(:wagons).find(params[:id])
     end
 
     def train_params

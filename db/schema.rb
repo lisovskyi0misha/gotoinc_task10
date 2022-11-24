@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_075729) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_123648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_075729) do
     t.index ["user_id"], name: "index_users_tickets_on_user_id"
   end
 
+  create_table "wagons", force: :cascade do |t|
+    t.integer "wagon_type"
+    t.integer "top_seats_quantity"
+    t.integer "lower_seats_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "train_id", null: false
+    t.index ["train_id"], name: "index_wagons_on_train_id"
+  end
+
   add_foreign_key "routes_stations", "routes"
   add_foreign_key "routes_stations", "stations"
   add_foreign_key "tickets", "stations", column: "first_station_id"
@@ -80,4 +90,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_075729) do
   add_foreign_key "trains", "stations", column: "current_station_id"
   add_foreign_key "users_tickets", "tickets"
   add_foreign_key "users_tickets", "users"
+  add_foreign_key "wagons", "trains"
 end
