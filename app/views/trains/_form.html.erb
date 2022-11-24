@@ -14,6 +14,10 @@
   <div>
     <%= form.label :number, style: "display: block" %>
     <%= form.text_field :number %>
+    <%= form.label :route_id, 'Route' %>
+    <%= form.collection_select :route_id, Route.all, :id, :title%>
+     <%= form.label :route_id, 'Current station' %>
+    <%= form.collection_select :station_id, Station.all, :id, :title%>
   </div>
 
   <div>

@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
   private
 
   def find_route
-    @route = Route.find_by_id(params[:id])
+    @route = Route.includes(:trains, :stations).find_by_id(params[:id])
   end
 
   def build_route
