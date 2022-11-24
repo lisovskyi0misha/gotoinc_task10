@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_123648) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_123648) do
     t.datetime "updated_at", null: false
     t.bigint "route_id", null: false
     t.bigint "station_id", null: false
+    t.integer "order_number"
     t.index ["route_id"], name: "index_routes_stations_on_route_id"
     t.index ["station_id"], name: "index_routes_stations_on_station_id"
   end
@@ -52,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_123648) do
     t.datetime "updated_at", null: false
     t.bigint "route_id"
     t.bigint "current_station_id"
+    t.boolean "ascending_sorting", default: true
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
@@ -72,12 +74,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_123648) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.integer "wagon_type"
+    t.string "type"
     t.integer "top_seats_quantity"
     t.integer "lower_seats_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "train_id", null: false
+    t.integer "side_top_seats_quantity"
+    t.integer "side_lower_seats_quantity"
+    t.integer "seated_seats_quantity"
+    t.integer "order_number"
     t.index ["train_id"], name: "index_wagons_on_train_id"
   end
 

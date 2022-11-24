@@ -1,10 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @train %>
-<p>Passenger wagons: <%= @train.wagons.passenger.count%></p>
-<p>Second-class wagons: <%= @train.wagons.second_class.count%></p>
-<p>Top-seats: <%= @seats[:top]%></p>
-<p>Lower-seats: <%= @seats[:lower]%></p>
+<% Wagon.subclasses.each do |cls| %>
+    <% if @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count > 0 %>
+        <p><%= cls%>(s): <%= @train.wagons.method(cls.to_s.delete_suffix('Wagon').downcase.to_sym).call.count%>
+    <% end %>
+<% end %>
+
+<% @seats.each do |key, val| %>
+    <% if val > 0 %>
+        <p><%= key.to_s.capitalize.gsub('_', '-') %> seats: <%= val %></p>
+    <%end%>
+<%end%>
+<ul>
+    <%@wagons.each do |wagon|%>
+        <li><%=link_to wagon.order_number, wagon_path(id: wagon.id)%></li>
+    <%end%>
+</ul>
 <div>
   <%= link_to "Edit this train", edit_train_path(@train) %> |
   <%= link_to "Back to trains", trains_path %>
