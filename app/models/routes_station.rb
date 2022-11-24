@@ -1,0 +1,2 @@
+class RoutesStation < ApplicationRecord
+end
