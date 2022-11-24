@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_192716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
     t.bigint "route_id", null: false
     t.bigint "station_id", null: false
     t.integer "order_number"
+    t.datetime "arrival_time", precision: nil
+    t.datetime "departure_time", precision: nil
+    t.integer "status"
     t.index ["route_id"], name: "index_routes_stations_on_route_id"
     t.index ["station_id"], name: "index_routes_stations_on_station_id"
   end
@@ -42,9 +45,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
     t.bigint "train_id", null: false
     t.bigint "first_station_id", null: false
     t.bigint "last_station_id", null: false
+    t.bigint "user_id", null: false
     t.index ["first_station_id"], name: "index_tickets_on_first_station_id"
     t.index ["last_station_id"], name: "index_tickets_on_last_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "trains", force: :cascade do |t|
@@ -62,15 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users_tickets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.bigint "ticket_id", null: false
-    t.index ["ticket_id"], name: "index_users_tickets_on_ticket_id"
-    t.index ["user_id"], name: "index_users_tickets_on_user_id"
+    t.string "passport_code"
   end
 
   create_table "wagons", force: :cascade do |t|
@@ -92,9 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_090855) do
   add_foreign_key "tickets", "stations", column: "first_station_id"
   add_foreign_key "tickets", "stations", column: "last_station_id"
   add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
   add_foreign_key "trains", "routes"
   add_foreign_key "trains", "stations", column: "current_station_id"
-  add_foreign_key "users_tickets", "tickets"
-  add_foreign_key "users_tickets", "users"
   add_foreign_key "wagons", "trains"
 end

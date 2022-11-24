@@ -1,0 +1,8 @@
+<%if @route.trains.present?%>
+    <h4>Trains:</h4>
+    <%@route.trains.each do |train| %>
+        <p>Number: <%=train.number%></p>
+    <%end%>
+<%else%>
+    <p>Route has no trains</p>
+<%end%>

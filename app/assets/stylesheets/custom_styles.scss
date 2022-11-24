@@ -1,6 +1,6 @@
 .form {
-    width: 200px;
-  }
+    width: 350px;
+}
 
 .footer {
     background-color: rgb(226, 216, 216);
@@ -10,4 +10,13 @@
     width: 100%;
     bottom: 0;
     position: fixed;
+}
+
+.station-time, .rails-bootstrap-forms-time-select {
+  display: flex;
+  flex-direction: row;
+}
+
+.data-cell {
+  padding: 5px;
 }

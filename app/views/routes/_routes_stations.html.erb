@@ -1,0 +1,21 @@
+<% if @stations.present? %>
+    <h4>Stations:</h4>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Arrival time</th>
+            <th>Departure time</th>
+            <th>Order</th>
+        </tr>
+        <%@stations.ordered.each do |station| %>
+            <tr>
+                <td class="data-cell"><%= station.station.title %></td>
+                <td class="data-cell"><%= station.arrival_time&.to_formatted_s(:long) %></td>
+                <td class="data-cell"><%= station.departure_time&.to_formatted_s(:long) %></td>
+                <td class="data-cell"><%= station.order_number %></td>
+            </tr>
+        <%end%>
+    </table>
+<%else%>
+    <p>Route has no stations</p>
+<%end%>

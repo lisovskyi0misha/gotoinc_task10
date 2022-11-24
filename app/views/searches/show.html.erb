@@ -1,0 +1,16 @@
+<% if @trains.first.present? %>
+    <% @trains.first.each do |train| %>
+        <h4><%= train.number %></h4>
+        <ul>
+            <li>Start: <%= @trains.last[train.id][:first_station].station.title%> at:   
+            <%= @trains.last[train.id][:first_station].departure_time&.to_formatted_s(:long) %></li>
+            <li>End: <%= @trains.last[train.id][:last_station].station.title %> at:
+            <%= @trains.last[train.id][:last_station].arrival_time&.to_formatted_s(:long) %></li>
+        </ul>
+        <%= link_to 'Buy', new_ticket_path(train_id: train)%>
+    <% end %>
+<% else %>
+    <h4>Results not found</h4>
+<% end %>
+
+<%= link_to 'Back to search', new_search_path %>
