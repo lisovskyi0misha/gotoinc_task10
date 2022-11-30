@@ -1,10 +1,10 @@
-<h1>Editing train</h1>
+<h1><%= t('.title')%></h1>
 
 <%= render "form", train: @train %>
 
 <br>
 
 <div>
-  <%= link_to "Show this train", [:admin, @train] %> |
-  <%= link_to "Back to trains", admin_trains_path %>
+  <%= link_to t('common.show'), [:admin, @train], class: 'btn btn-outline-success' %>
+  <%= link_to t('common.back'), admin_trains_path, class: 'btn btn-outline-secondary' %>
 </div>

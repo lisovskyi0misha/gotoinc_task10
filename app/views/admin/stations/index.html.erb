@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Stations</h1>
+<h1><%= t('.title') %></h1>
 
 <div id="stations">
 <%= render partial: 'shared/objects_list', locals: {objects: @stations} %>
 
 </div>
 
-<%= link_to "New station", new_admin_station_path %>
+<%= link_to t('common.create'), new_admin_station_path %>

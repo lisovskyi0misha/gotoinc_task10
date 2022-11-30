@@ -1,0 +1,85 @@
+uk:
+  common:
+    back: 'Назад'
+    create: 'Створити новий об`єкт'
+    show: 'Детальніше'
+    edit: 'Редагувати'
+    destroy: 'Видалити'
+    type: 'Тип'
+    log_out: 'Вийти'
+    sign_in: 'Увійти'
+  wagon_types:
+      coupe: 'Купейний'
+      economy: 'Плацкартний'
+      seated: 'Сидячий'
+      sleeping: 'Спальний'
+  admin:
+    stations:
+      new:
+        title: 'Нова станція'
+      form:
+        submit: '%{action} станцію'
+      index:
+        title: 'Станції'
+      station:
+        title: 'Назва'
+    trains:
+      index: 
+        title: 'Потяги'
+      train:
+        number: 'Номер'
+        route: 'Маршрут'
+        no_route: 'Потяг не має маршруту'
+      show:
+        seats: 'Місця'
+        wagons: 'Вагони'
+        create_wagon: 'Створити новий вагон'
+        top_seats: 'Кількість верхніх місць'
+        lower_seats: 'Кількість нижніх місць'
+        side_top_seats: 'Кількість бокових верхніх місць'
+        side_lower_seats: 'Кількість бокових нижніх місць'
+        seated_seats: 'Кількість сидячих місць'
+        coupe: 'Купейних вагонів'
+        economy: 'Плацкартних вагонів'
+        seated: 'Сидячих вагонів'
+        sleeping: 'Спальних вагонів'
+      form: 
+        submit: '%{action} потяг'
+      edit:
+        title: 'Редагування потягу'
+    wagons:
+      choose_type:
+        wagon_type: 'Тип вагону'
+        coupe: 'Купейний вагон'
+        economy: 'Плацкартний вагон'
+        seated: 'Сидячий вагон'
+        sleeping: 'Спальний вагон'
+        choose: 'Обрати'
+      new:
+        title: 'Створення вагону'
+        create: 'Створити вагон'
+      edit:
+        submit: 'Оновити вагон'
+      index:
+        title: 'Список вагонів'
+        wagon: 'Вагон'
+        train_number: 'Номер потягу'
+      show:
+        title: 'Вагон'
+        top_seats: 'Кількість верхніх місць'
+        lower_seats: 'Кількість нижніх місць'
+        side_top_seats: 'Кількість бокових верхніх місць'
+        side_lower_seats: 'Кількість бокових нижніх місць'
+        seated_seats: 'Кількість сидячих місць' 
+        train_number: 'Номер потягу'
+  shared:
+    objects_list:
+      title: 'Назва'
+      number: 'Номер'
+    header:
+      stations: 'Станції'
+      trains: 'Потяги'
+      routes: 'Маршрути'
+      tickets: 'Квитки'
+      my_tickets: 'Мої Квитки'
+      search_tickets: 'Пошук квитків'

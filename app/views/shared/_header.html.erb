@@ -5,34 +5,34 @@
                 <% if user_signed_in?%>
                     <% if current_user.admin?%>
                         <li class="nav-item">
-                            <%= link_to 'Stations', admin_stations_path, class: "nav-link" %>
+                            <%= link_to t('.stations'), admin_stations_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Routes', admin_routes_path, class: "nav-link" %>
+                            <%= link_to t('.routes'), admin_routes_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Trains', admin_trains_path, class: "nav-link" %>
+                            <%= link_to t('.trains'), admin_trains_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Wagons', admin_wagons_path, class: "nav-link" %>
+                            <%= link_to t('.wagons'), admin_wagons_path, class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Tickets', admin_tickets_path, class: "nav-link" %>
+                            <%= link_to t('.tickets'), admin_tickets_path, class: "nav-link" %>
                         </li>
                     <% else %>
                         <li class="nav-item">
-                            <%= link_to 'My tickets', show_all_ticket_path(user_id: current_user.id), class: "nav-link" %>
+                            <%= link_to t('.my_tickets'), show_all_ticket_path(user_id: current_user.id), class: "nav-link" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Search Tickets', find_ticket_path, class: "nav-link" %>
+                            <%= link_to t('.search_tickets'), find_ticket_path, class: "nav-link" %>
                         </li>
                     <% end %>
                     <li class="nav-item">
-                        <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
+                        <%= button_to t('common.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
                     </li>
                 <% else %>
                     <li class="nav-item">
-                        <%= link_to 'Sign in', new_user_session_path, class: "btn btn-outline-success" %>
+                        <%= link_to t('common.sign_in'), new_user_session_path, class: "btn btn-outline-success" %>
                     </li>
                 <% end %>
             </ul>

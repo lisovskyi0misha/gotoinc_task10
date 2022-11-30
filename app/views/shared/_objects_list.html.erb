@@ -1,14 +1,14 @@
 <% objects.each do |object| %>
     <p>
         <% if object.class.method_defined?(:title) %>
-            <strong>Title:</strong>
+            <strong><%= t('.title' )%>:</strong>
             <%= object.title %>
         <% else %>
-            <strong>Number:</strong>
+            <strong><%= t('.number') %>:</strong>
             <%= object.number %>
         <%end%>
     </p>
     <p>
-        <%= link_to "Show this #{objects.model}".downcase, "#{objects.model.to_s.downcase}s/#{object.id}" %>
+        <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}" %>
     </p>
 <% end %>
