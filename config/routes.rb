@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  resources :trains do
-    resources :wagons, only: [:new, :create] do
-      get :choose_type, on: :member
+  devise_for :users, controllers: {registrations: 'users/registrations', sessions: 'users/sessions'}
+  root to: 'landing_page#index'
+  namespace :admin do
+    resources :tickets, only: [:index, :update, :edit, :destroy, :show]
+    resources :stations
+    resources :routes do
+      get :edit_stations, on: :member
+      put :update_stations, on: :member
     end
+    resources :trains do
+      resources :wagons, only: [:new, :create] do
+        get :choose_type, on: :member
+      end
+    end
+    resources :wagons, only: [:index, :edit, :update, :destroy, :show]
   end
-  resources :stations
-  resources :routes do
-    get :edit_stations, on: :member
-    put :update_stations, on: :member
+  resource :ticket, only: [:show, :new, :create] do
+    get '/all/:user_id', to: 'tickets#show_all', as: :show_all
+    get '/results', to: 'tickets#show_results', as: :show_results
+    get '/find', to: 'tickets#search', as: :find
   end
-  resources :wagons, only: [:index, :edit, :update, :destroy, :show]
-  resource :search, only: [:show, :new]
-  resource :ticket
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

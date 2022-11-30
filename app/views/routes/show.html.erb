@@ -1,8 +1,0 @@
-<p>Id: <%= @route.id%></p>
-<p>Name: <%= @route.title%></p>
-<p><%= @route.created_at%></p>
-<%= render 'routes_trains' %>
-<%= render 'routes_stations' %>
-<%= button_to 'Delete', route_path(id: @route.id), method: :delete, class: 'btn btn-light' %>
-<%= link_to 'Edit', edit_route_path(id: @route.id), class: 'btn btn-light' %>
-<%= link_to 'Back to routes', routes_path, class: 'btn btn-light' %>

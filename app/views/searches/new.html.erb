@@ -1,5 +1,0 @@
-<%= bootstrap_form_for :stations_search, url: search_path, method: :GET do |f| %>
-    <%= f.collection_select :first_station, Station.all, :id, :title %>
-    <%= f.collection_select :last_station, Station.all, :id, :title %>
-    <%= f.submit 'Search' %>
-<% end %>

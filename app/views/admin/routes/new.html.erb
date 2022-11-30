@@ -1,0 +1,8 @@
+<div class="form">
+    <%=bootstrap_form_with url: admin_routes_path, method: :POST do |f|%>
+        <%= f.text_field :title%>
+        <%= f.collection_select :first_station, Station.all, :id, :title, label: 'First Station' %>
+        <%= f.collection_select :last_station, Station.all, :id, :title, label: 'Last Station' %>
+        <%= f.submit%>
+    <%end%>
+</div>

@@ -9,6 +9,6 @@
         <%end%>
     </p>
     <p>
-        <%= link_to "Show this #{objects.model}".downcase, "/#{objects.model.to_s.downcase}s/#{object.id}" %>
+        <%= link_to "Show this #{objects.model}".downcase, "#{objects.model.to_s.downcase}s/#{object.id}" %>
     </p>
 <% end %>

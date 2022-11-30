@@ -1,0 +1,11 @@
+<h1>Wagon list</h1>
+
+<ul>
+    <% @wagons.each do |wagon| %>
+        <li>
+            <h4>Wagon: <%= wagon.id %></h4>
+            <p>Type: <%= wagon.type %></p>
+            <p>Train: <%= wagon.train.number %></p>
+        </li>
+    <% end %>
+</ul>

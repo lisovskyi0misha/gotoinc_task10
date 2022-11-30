@@ -1,0 +1,16 @@
+<% @tickets.each do |ticket| %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Ticket</h5>
+        <p class="card-text"><%= ticket.owner_name%></p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Starts from <%= ticket.first_station.title %> 
+        at: <%= ticket.train.route.routes_stations.first_station.first.departure_time.to_formatted_s(:long) %></li>
+        <li class="list-group-item">Starts from <%= ticket.last_station.title %>
+        at: <%= ticket.train.route.routes_stations.last_station.first.departure_time.to_formatted_s(:long) %></li>
+        <li class="list-group-item">Train: <%= ticket.train.number %></li>
+    </ul>
+    <%= link_to 'Show this ticket', admin_ticket_path(id: ticket.id), class: 'btn btn-outline-success' %>
+  </div>
+<% end %>

@@ -1,6 +1,9 @@
-<%= bootstrap_form_for @user, url: ticket_path, method: :POST do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_field :passport_code %>
-    <%= f.hidden_field :train_id, value: @train_id%>
+<%= bootstrap_form_for @ticket, url: ticket_path, method: :POST do |f| %>
+    <%= f.text_field :owner_name %>
+    <%= f.text_field :owner_passport %>
+    <%= f.hidden_field :train_id, value: @train.id%>
+    <%= f.hidden_field :first_station_id, value: @train_stations.first_station.first.station_id %>
+    <%= f.hidden_field :last_station_id, value: @train_stations.last_station.first.station_id %>
+    <%= f.hidden_field :user_id, value: current_user.id%>
     <%= f.submit %>
 <% end %>

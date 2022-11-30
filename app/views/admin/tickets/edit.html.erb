@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @ticket, url: admin_ticket_path(id: @ticket.id), method: :PUT do |f| %>
+    <%= f.text_field :owner_name %>
+    <%= f.text_field :owner_passport %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+    <%= f.submit %>
+<% end %>
