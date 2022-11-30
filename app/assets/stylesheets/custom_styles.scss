@@ -1,15 +1,15 @@
 .form {
-    width: 350px;
+  width: 350px;
 }
 
 .footer {
-    background-color: rgb(226, 216, 216);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    bottom: 0;
-    position: fixed;
+  background-color: rgb(226, 216, 216);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 
 .station-time, .rails-bootstrap-forms-time-select {
@@ -19,4 +19,14 @@
 
 .data-cell {
   padding: 5px;
+}
+
+.objext-list-cell {
+  padding: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#economy-and-coupe-class-seats, #economy-class-seats, #seated-class-seats, #not-sleeping-class-seats {
+  display: none;
 }

@@ -8,6 +8,20 @@ uk:
     type: 'Тип'
     log_out: 'Вийти'
     sign_in: 'Увійти'
+    errors:
+      undefined_error: 'Щось пішло не так'
+  mailer:
+    general:
+      greeting: 'Доброго дня, %{name}'
+      all_tickets_link: 'Переглянути всі Ваші квитки можна за'
+      one_ticket_link: 'Для огляду квитка перейдіть за'
+      link_word: ' посиланням'
+    deletion:
+      subject: 'Відміна квитка'
+      notification: 'Ви відмінили квиток за маршрутом %{route}'
+    purschase:
+      subject: 'Купівля квитка'
+      notification: 'Ви придбали квиток за маршрутом %{route}'
   wagon_types:
       coupe: 'Купейний'
       economy: 'Плацкартний'
@@ -48,22 +62,22 @@ uk:
       edit:
         title: 'Редагування потягу'
     wagons:
-      choose_type:
+      new:
+        title: 'Створення вагону'
+        create: 'Створити вагон'
         wagon_type: 'Тип вагону'
         coupe: 'Купейний вагон'
         economy: 'Плацкартний вагон'
         seated: 'Сидячий вагон'
         sleeping: 'Спальний вагон'
         choose: 'Обрати'
-      new:
-        title: 'Створення вагону'
-        create: 'Створити вагон'
       edit:
         submit: 'Оновити вагон'
       index:
         title: 'Список вагонів'
         wagon: 'Вагон'
         train_number: 'Номер потягу'
+        seats_count: 'Кількість місць'
       show:
         title: 'Вагон'
         top_seats: 'Кількість верхніх місць'

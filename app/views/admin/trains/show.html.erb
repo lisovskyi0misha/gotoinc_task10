@@ -23,7 +23,7 @@
         <li><%=link_to wagon.order_number, admin_wagon_path(id: wagon.id)%></li>
     <%end%>
 </ul>
-<%= link_to t('.create_wagon'), choose_type_admin_train_wagon_path(train_id: @train), class: 'btn btn-outline-success' %>
+<%= link_to t('.create_wagon'), new_admin_train_wagon_path(train_id: @train), class: 'btn btn-outline-success' %>
 <div>
   <%= link_to t('common.edit'), edit_admin_train_path(@train), class: 'btn btn-outline-warning' %> 
   <%= link_to t('common.back'), admin_trains_path, class: 'btn btn-outline-secondary' %>

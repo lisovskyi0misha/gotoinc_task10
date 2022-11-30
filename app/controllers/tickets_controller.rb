@@ -19,7 +19,15 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.includes(:user, :first_station, :last_station, train: {route: :routes_stations}).find_by_id(params[:id])
+    @ticket = Ticket.includes(:user, :first_station, :last_station, train: {route: :routes_stations}).find(params[:id])
+  rescue
+    flash[:error] = t('common.errors.undefined_error')
+    redirect_to show_all_ticket_path(user_id: current_user.id)
+  end
+
+  def destroy
+    Ticket.destroy_by(id: params[:id])
+    redirect_to show_all_ticket_path(user_id: current_user.id)
   end
 
   def show_all

@@ -1,12 +1,19 @@
 <h1><%= t('.title') %></h1>
 
-<ul>
+<table>
+    <tr>
+        <th class="objext-list-cell"><%= t('.wagon') %></th>
+        <th class="objext-list-cell"><%= t('common.type') %></th>
+        <th class="objext-list-cell"><%= t('.train_number') %></th>
+        <th class="objext-list-cell"><%= t('.seats_count') %></th>
+    </tr>
     <% @wagons.each do |wagon| %>
-        <li>
-            <h4><%= t('.wagon') %>: <%= wagon.id %></h4>
-            <p><%= t('common.type') %>: <%= t("wagon_types.#{wagon.type.delete_suffix('Wagon').downcase}") %></p>
-            <p><%= t('.train_number') %>: <%= wagon.train.number %></p>
-            <%= link_to t('common.show'), admin_wagon_path(wagon.id), class: 'btn btn-outline-success' %>
-        </li>
+        <tr>
+            <td class="objext-list-cell"><%= wagon.id %></td>
+            <td class="objext-list-cell"><%= t("wagon_types.#{wagon.type.delete_suffix('Wagon').downcase}") %></td>
+            <td class="objext-list-cell"><%= wagon.train.number %></td>
+            <td class="objext-list-cell"><%= wagon.all_seats_count %></td>
+            <td class="objext-list-cell"><%= link_to t('common.show'), admin_wagon_path(wagon.id), class: 'btn btn-outline-success' %></td>
+        </tr>
     <% end %>
 </ul>

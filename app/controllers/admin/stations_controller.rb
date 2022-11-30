@@ -17,7 +17,13 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def create
-    @station = Station.new(station_params)
+    @station = Station.create(station_params)
+    if @station.valid?
+      redirect_to admin_stations_path
+    else
+      flash[:error] = @station.errors.full_messages.join(', ')
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update

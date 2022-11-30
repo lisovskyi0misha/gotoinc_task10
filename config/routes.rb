@@ -9,13 +9,11 @@ Rails.application.routes.draw do
       put :update_stations, on: :member
     end
     resources :trains do
-      resources :wagons, only: [:new, :create] do
-        get :choose_type, on: :member
-      end
+      resources :wagons, only: [:new, :create]
     end
     resources :wagons, only: [:index, :edit, :update, :destroy, :show]
   end
-  resource :ticket, only: [:show, :new, :create] do
+  resource :ticket, only: [:show, :new, :create, :destroy] do
     get '/all/:user_id', to: 'tickets#show_all', as: :show_all
     get '/results', to: 'tickets#show_results', as: :show_results
     get '/find', to: 'tickets#search', as: :find

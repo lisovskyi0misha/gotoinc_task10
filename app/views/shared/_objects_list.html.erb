@@ -1,14 +1,33 @@
-<% objects.each do |object| %>
-    <p>
-        <% if object.class.method_defined?(:title) %>
-            <strong><%= t('.title' )%>:</strong>
-            <%= object.title %>
-        <% else %>
-            <strong><%= t('.number') %>:</strong>
-            <%= object.number %>
-        <%end%>
-    </p>
-    <p>
-        <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}" %>
-    </p>
-<% end %>
+<table class="object-list-table">
+    <tr>
+        <th class="objext-list-cell">
+            <% if objects.first.class.method_defined?(:title) %>   
+                <strong><%= t('.title' )%></strong>
+            <% else %>
+                <strong><%= t('.number') %></strong>
+            <%end%>
+        </th>
+    </tr>
+
+    <% objects.each do |object| %>
+        <tr>
+            <td class="objext-list-cell">
+                <% if object.class.method_defined?(:title) %>
+                    <%= object.title %>
+                <% else %>
+                    <%= object.number %><span><i class="bi bi-pencil-square"></i></span>
+                <%end%>
+                <button class="btn" id="object_<%= object.id %>"><i class="bi bi-pencil-square"></i></span></button>
+            </td>
+            <td class="objext-list-cell">
+                <%= link_to t('common.show'), "#{objects.model.to_s.downcase}s/#{object.id}", class: 'btn btn-outline-success' %>
+            </td>
+            <td class="objext-list-cell">
+                <%= link_to t('common.edit'), "#{objects.model.to_s.downcase}s/#{object.id}/edit", class: 'btn btn-outline-warning' %>
+            </td>
+            <td class="objext-list-cell">
+                <%= button_to t('common.destroy'), "#{objects.model.to_s.downcase}s/#{object.id}", method: :delete, class: 'btn btn-outline-danger' %>
+            </td>
+        </tr>
+    <% end %>
+</table>
