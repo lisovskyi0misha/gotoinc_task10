@@ -1,14 +1,28 @@
-<% objects.each do |object| %>
-    <p>
-        <% if object.class.method_defined?(:title) %>
-            <strong>Title:</strong>
-            <%= object.title %>
-        <% else %>
-            <strong>Number:</strong>
-            <%= object.number %>
-        <%end%>
-    </p>
-    <p>
-        <%= link_to "Show this #{objects.model}".downcase, "#{objects.model.to_s.downcase}s/#{object.id}" %>
-    </p>
-<% end %>
+<table class="object-list-table">
+    <tr class="object-list-row">
+        <th class="objext-list-cell"> 
+            <strong><%= t(".#{attribute.to_s}" )%></strong>
+        </th>
+    </tr>
+
+    <% objects.each do |object| %>
+        <tr class="object-list-row">
+            <td class="objext-list-cell">
+                <div id="object_title_<%= object.id %>">
+                    <%= object.method(attribute).call %>
+                </div>
+                <%= link_to '', class: "button-for-form", data: { object_id: object.id} do %>
+                    <i class="bi bi-pencil-square"></i></span>
+                <%end%>
+                <%= bootstrap_form_for object, url: "#{link_word}/#{object.id}/inline_update", html: {style: "display: none"}, method: :PUT  do |f| %>
+                    <%= f.text_field attribute%>
+                    <%= f.submit t('common.edit') %>
+                <% end %>
+                <div class="cancel-button", id="cancel-button-object-<%= object.id %>">
+                    <button class="btn btn-outline-primary"><%= t('.cancel') %></button>
+                </div>
+            </td>
+            <%= render partial: 'shared/link_buttons', locals: {link_word: link_word, id: object.id} %>
+        </tr>
+    <% end %>
+</table>

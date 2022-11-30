@@ -1,4 +1,0 @@
-<%= bootstrap_form_with url: new_admin_train_wagon_path(train_id: params[:train_id]), method: :GET do |f| %>
-    <%= f.select :wagon_type, %w(CoupeWagon SleepingWagon SeatedWagon EconomyWagon) %>
-    <%= f.submit%>
-<% end %>

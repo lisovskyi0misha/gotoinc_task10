@@ -1,11 +1,19 @@
-<h1>Wagon list</h1>
+<h1><%= t('.title') %></h1>
 
-<ul>
+<table>
+    <tr class="object-list-row">
+        <th class="objext-list-cell"><p class="cell-id-text"><%= t('.wagon') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('common.type') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.train_number') %></p></th>
+        <th class="objext-list-cell"><p class="cell-text"><%= t('.seats_count') %></p></th>
+    </tr>
     <% @wagons.each do |wagon| %>
-        <li>
-            <h4>Wagon: <%= wagon.id %></h4>
-            <p>Type: <%= wagon.type %></p>
-            <p>Train: <%= wagon.train.number %></p>
-        </li>
+        <tr class="object-list-row">
+            <td class="objext-list-cell"><p class="cell-id-text"><%= wagon.id %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= t("wagon_types.#{wagon.type.delete_suffix('Wagon').downcase}") %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= wagon.train.number %></p></td>
+            <td class="objext-list-cell"><p class="cell-text"><%= wagon.all_seats_count %></p></td>
+            <%= render partial: 'shared/link_buttons', locals: {link_word: 'wagons', id: wagon.id} %>
+        </tr>
     <% end %>
-</ul>
+</table>

@@ -10,17 +10,18 @@ class Admin::WagonsController < Admin::BaseController
   def show
   end
 
-  def choose_type
-  end
-
   def new
-    @form_inputs = Wagons::CreateForm.new(params[:wagon_type]).call
+    @collection = [[t('.coupe'), 'CoupeWagon'], [t('.sleeping'), 'SleepingWagon'], [t('.seated'), 'SeatedWagon'], [t('.economy'), 'EconomyWagon']]
   end
 
   def create
     @wagon = Wagon.create(wagon_params)
-    raise StandardError, @wagon.errors.full_messages if @wagon.invalid?
-    redirect_to train_path(params[:train_id])
+    if @wagon.save
+      redirect_to admin_train_path(params[:train_id])
+    else
+      flash[:error] = @wagon.errors.full_messages
+    redirect_to new_admin_train_wagon_path(wagon_type: params[:wagon][:type])
+    end
   end
 
   def edit

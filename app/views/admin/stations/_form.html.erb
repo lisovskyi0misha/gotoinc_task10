@@ -1,22 +1,10 @@
-<%= form_with(model: [:admin, station]) do |form| %>
-  <% if station.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(station.errors.count, "error") %> prohibited this station from being saved:</h2>
-
-      <ul>
-        <% station.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= bootstrap_form_with(model: [:admin, station]) do |form| %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit t('.submit', action: params[:action] == 'new' ? 'Створити' : 'Оновити') %>
   </div>
 <% end %>

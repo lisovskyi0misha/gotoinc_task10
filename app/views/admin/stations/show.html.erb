@@ -3,8 +3,7 @@
 <%= render @station %>
 
 <div>
-  <%= link_to "Edit this station", edit_admin_station_path(@station) %> |
-  <%= link_to "Back to stations", admin_stations_path %>
-
-  <%= button_to "Destroy this station", [:admin, @station], method: :delete %>
+    <%= link_to t('common.edit'), edit_admin_station_path(@station), class: 'btn btn-outline-warning' %>
+    <%= link_to t('common.back'), admin_stations_path, class: 'btn btn-outline-secondary' %>
+    <%= button_to t('common.destroy'), [:admin, @station], method: :delete, class: 'btn btn-outline-danger' %>
 </div>

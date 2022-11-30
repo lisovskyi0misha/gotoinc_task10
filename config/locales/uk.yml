@@ -1,0 +1,110 @@
+uk:
+  common:
+    back: 'Назад'
+    create: 'Створити новий об`єкт'
+    show: 'Детальніше'
+    edit: 'Редагувати'
+    destroy: 'Видалити'
+    type: 'Тип'
+    log_out: 'Вийти'
+    sign_in: 'Увійти'
+    errors:
+      undefined_error: 'Щось пішло не так'
+  mailer:
+    general:
+      greeting: 'Доброго дня, %{name}'
+      all_tickets_link: 'Переглянути всі Ваші квитки можна за'
+      one_ticket_link: 'Для огляду квитка перейдіть за'
+      link_word: ' посиланням'
+    deletion:
+      subject: 'Відміна квитка'
+      notification: 'Ви відмінили квиток за маршрутом %{route}'
+    purschase:
+      subject: 'Купівля квитка'
+      notification: 'Ви придбали квиток за маршрутом %{route}'
+  wagon_types:
+      coupe: 'Купейний'
+      economy: 'Плацкартний'
+      seated: 'Сидячий'
+      sleeping: 'Спальний'
+  admin:
+    stations:
+      new:
+        title: 'Нова станція'
+      form:
+        submit: '%{action} станцію'
+      index:
+        title: 'Станції'
+      station:
+        title: 'Назва'
+      inline_update:
+        success: 'Станція була успішно оновлена'
+    trains:
+      index: 
+        title: 'Потяги'
+      inline_update: 
+        success: 'Потяг був успішно оновлений'
+      train:
+        number: 'Номер'
+        route: 'Маршрут'
+        no_route: 'Потяг не має маршруту'
+      show:
+        seats: 'Місця'
+        wagons: 'Вагони'
+        create_wagon: 'Створити новий вагон'
+        top_seats: 'Кількість верхніх місць'
+        lower_seats: 'Кількість нижніх місць'
+        side_top_seats: 'Кількість бокових верхніх місць'
+        side_lower_seats: 'Кількість бокових нижніх місць'
+        seated_seats: 'Кількість сидячих місць'
+        coupe: 'Купейних вагонів'
+        economy: 'Плацкартних вагонів'
+        seated: 'Сидячих вагонів'
+        sleeping: 'Спальних вагонів'
+      form: 
+        submit: '%{action} потяг'
+      edit:
+        title: 'Редагування потягу'
+    routes:
+      index:
+        route: 'Маршрут'
+        trains_count: 'Кількість потягів'
+        stations_count: 'Кількість станцій'
+        title: 'Назва'
+    wagons:
+      new:
+        title: 'Створення вагону'
+        create: 'Створити вагон'
+        wagon_type: 'Тип вагону'
+        coupe: 'Купейний вагон'
+        economy: 'Плацкартний вагон'
+        seated: 'Сидячий вагон'
+        sleeping: 'Спальний вагон'
+        choose: 'Обрати'
+      edit:
+        submit: 'Оновити вагон'
+      index:
+        title: 'Список вагонів'
+        wagon: 'Вагон'
+        train_number: 'Номер потягу'
+        seats_count: 'Кількість місць'
+      show:
+        title: 'Вагон'
+        top_seats: 'Кількість верхніх місць'
+        lower_seats: 'Кількість нижніх місць'
+        side_top_seats: 'Кількість бокових верхніх місць'
+        side_lower_seats: 'Кількість бокових нижніх місць'
+        seated_seats: 'Кількість сидячих місць' 
+        train_number: 'Номер потягу'
+  shared:
+    objects_list:
+      title: 'Назва'
+      number: 'Номер'
+      cancel: 'Відмінити'
+    header:
+      stations: 'Станції'
+      trains: 'Потяги'
+      routes: 'Маршрути'
+      tickets: 'Квитки'
+      my_tickets: 'Мої Квитки'
+      search_tickets: 'Пошук квитків'

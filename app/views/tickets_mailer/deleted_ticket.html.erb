@@ -1,0 +1,3 @@
+<p><%= t('mailer.general.greeting', name: @user.name) %></p>
+<p><%= t('mailer.deletion.notification', route: @ticket.name) %></p>
+<p><%= t('mailer.general.all_tickets_link')%><%= link_to t('mailer.general.link_word'), show_all_ticket_url(user_id: @ticket.user_id) %>

@@ -10,6 +10,14 @@ class Wagon < ApplicationRecord
   scope :ordered, -> { order(:order_number) }
   scope :reverse_ordered, -> { order(:order_number).reverse_order }
 
+  def all_seats_count
+    number = 0
+    %w(top_seats_quantity lower_seats_quantity side_lower_seats_quantity side_top_seats_quantity seated_seats_quantity).each do |type|
+      number += self.method(type.to_sym).call unless self.method(type.to_sym).call.nil?
+    end
+    number
+  end
+
   private
   
   def set_order_number
